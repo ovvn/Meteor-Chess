@@ -1,3 +1,5 @@
+//client/games/games.js
+
 //0401_Waiting for Data.mp4
 Template.games.onCreated(function(){
     //получить с сервера данные для template.games
