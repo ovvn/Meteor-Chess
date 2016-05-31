@@ -1,0 +1,74 @@
+<!-- 0401_Waiting for Date  -->
+
+<template name="games">
+  {{#requireLogin}} <!-- requireLogin это helper для games  -->
+    
+    {{#if Template.subscriptionsReady }}
+        <!-- если все данные для работы данного template загружены через subscribe в games.js-->
+        <!-- Отображаем html данной страницы -->
+        <h2> Games </h2>
+    
+        {{#if possibleOpponents}}
+            <form class="form-inline" >
+                <label> Start new game with</label>
+                <select name='otherPlayer' class='form-control'>
+                    {{#each opp in possibleOpponents}}
+                        <option value='{{opp._id}}'>{{opp.username}}</option>
+                    {{/each}}
+                </select>
+                
+                <label>I will play</label>
+                <select name='color' class='form-control'>
+                   <option value='white'>White</option>
+                   <option value='black'>Black</option>
+                </select>
+                
+                <button class="btn btn-primary">Create Game</button>
+            </form>
+        {{else}}
+            <p>Перед началом игры Вам нужно найти друзей по игре ... Или у Вас уже есть не оконченные игры со всеми друзьями.</p>
+        {{/if}}
+    
+    
+        <h2>Текущие игры</h2>
+        <ul>
+            {{#each currentGames}}
+                <li>
+                    {{#if needsConfirmation}}
+                        {{#if byMe}}
+                            Запрос игры от игрока {{username opponent}}
+                            <button id="accept" class="btn btn-xs btn-success">Принять</button>
+                            <button id="decline" class="btn btn-xs btn-warning">Отклонить</button>
+                        {{else}}
+                            Игра между {{username white}} and {{username black}} (Ожидается подтверждение игрока {{username needsConfirmation}})
+                        {{/if}}
+                    
+                    {{else}}
+                        <a href='/games/{{_id}}'>Игра между {{username white}} and {{username black}} </a>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    
+    
+        <h2>Архив игр</h2>
+        <ul>
+            {{#each archivedGames}}
+                <li><a href='/games/{{_id}}'>
+                        {{username white}} vs.
+                        {{username black}} 
+                        ({{result}})
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    
+    
+    
+    {{else}}
+        <!-- иначе - запуск анимации паузы ожидания -->
+        {{> spinner}}
+    {{/if}}
+  {{/requireLogin}}
+  
+</template>

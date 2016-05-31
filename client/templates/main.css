@@ -1,0 +1,71 @@
+.users_login {
+    padding:15px;
+    float:right}
+
+.upper_menu {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid #e7e7e7;
+    background-color: #f8f8f8;
+    list-style: none;
+}
+
+.dropdown-menu {
+    left:-230px;
+}
+
+.brand_name {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 28px;
+    line-height: 20px;
+    color: dimgrey;
+}
+
+.upper_list {
+    display: inline-block;
+    list-style: none;
+    padding:0;
+}
+
+.upper_list li{
+    display: inline-block;
+    padding:0;    
+}
+
+.upper_list li a{
+    text-decoration: none; 
+    padding:15px; 
+    display: inline-block;
+}
+
+.upper_list li:hover {outline: 1px solid black}
+
+.upper_list li a:focus{font-weight: bold}
+
+.game_table{
+    border: 2px solid black;
+    margin: auto;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.game_table td {
+    width: 40px; 
+    height: 40px; 
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+
+.game_table tr:nth-child(2n+1) td:nth-child(2n),
+.game_table tr:nth-child(2n) td:nth-child(2n+1)
+{
+    background: #ccc;
+}
+
+td.selected {
+    box-shadow: inset 0 0 15px #03A9F4;
+}

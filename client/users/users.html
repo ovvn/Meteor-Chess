@@ -1,0 +1,29 @@
+<!--0301_List Users.mp4-->
+<template name="users">
+    <ul class="list-group">
+        {{#each my_users}}
+        <!-- аналогично можно записать {{#each u in my_users}} -->
+        {{#if username }} <!--если поле не пустое то создать li-->
+            {{> user}} <!-- или так {{> user u}} если нужно передать данные в темплейт-->
+        {{/if}}
+       
+        {{/each}}
+    </ul>
+</template>
+
+
+<template name="user">
+    <li class="list-group-item">
+        {{#if currentUser}}
+            <button class="btn btn-default add">
+                {{#if alreadyFriends _id}}
+                    (-) удалить из списка друзей
+                {{else}}
+                    (+) добавить в друзья
+                {{/if}}
+            </button>
+        {{/if}}
+        {{username}}
+         <!-- аналогично можно записать {{u.username}} -->
+    </li>
+</template>

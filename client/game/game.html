@@ -1,0 +1,76 @@
+<!-- 0501_Get the Game Date.mp4 -->
+<template name="game">
+    {{#if Template.subscriptionsReady}}
+   
+    <h4>Играют: {{username game.white}} (играет белыми) против {{username game.black}} (играет черными) 
+    </h4>
+    
+    <h3>&#9812; &#9813; &#9814; &#9815; &#9816; &#9817; &#9818; &#9819; &#9820; &#9821; &#9822; &#9823;</h3>
+    
+    <div class="row">
+        <div class="col-sm-4"> {{>board rows}} </div>
+        <div class="col-sm-4"> 
+            {{#if result}}
+                <h2>{{result}}</h2>
+            {{else}}
+                <h2>Сейчас ходит <strong>{{currentTurn}}</strong>!</h2>
+            
+            {{/if}}
+            <h3>Ходы игры</h3>
+            {{#if result}}
+                {{> stepper result}}
+            {{/if}}
+            
+            {{> moveList moves}}
+        </div>
+        <div class="col-sm-4"> {{> chat}} </div>
+    </div>
+    
+    {{/if}}
+</template>
+
+
+<template name="stepper">
+    <!-- this здесь равен переданному параметру - result -->
+    
+    {{#if canStep this}}
+        <button class="btn btn-primary" id="step">Показать историю игры пошагово</button>
+    {{/if}}
+    
+    {{#if stepping}}
+        <div class="btn-group">
+            <button id='prev' class="btn btn-default"> &larr; Предыдущий</button>
+            <button id='next' class="btn btn-default"> Следующий &rarr; </button>
+            
+        </div>
+    {{/if}}
+</template>
+
+
+<template name="board">
+    <table class="game_table">
+        <!-- this переданный массив rows-->
+        {{#each row in this}}
+            <tr>
+              <!--  {{#each cell in row}}
+                    <td id='{{cell.cell}}'>
+                        {{{cell.img}}}
+                -->
+                {{#each row}}
+                    <td id='{{cell}}'>
+                        {{{img}}}
+                
+                    </td>
+                {{/each}}
+            </tr>
+        {{/each}}
+    </table>
+</template>
+
+<template name="moveList">
+    <ol>
+        {{#each move in this}}
+            <li> {{move}} </li>
+        {{/each}}
+    </ol>
+</template>

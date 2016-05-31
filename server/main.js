@@ -1,3 +1,7 @@
+//server/main.js
+
+//внес изменения
+
 //0301_List Users.mp4
 Meteor.publish('users', function(){
     return Meteor.users.find({}, { username : 1, profile : 1});

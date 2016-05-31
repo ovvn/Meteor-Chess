@@ -1,0 +1,26 @@
+<template name = "layout">
+
+<div class="container">
+
+    <div class="upper_menu">
+        <div class="clearfix">
+            <a class="brand_name" href="/">Chess</a>
+            <ul class="upper_list">
+                <li><a href="/users">Find Friends</a></li>
+                <li><a href="/games">Play Chess</a></li>
+            </ul>
+            <div class="users_login" id="navigation"> 
+                {{> loginButtons}}
+            </div>    
+         
+        </div>
+    </div>
+
+    
+	<div id="main">
+		{{> Template.dynamic template=child}}
+	</div>
+	
+</div>
+
+</template>

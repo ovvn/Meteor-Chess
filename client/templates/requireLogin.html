@@ -1,0 +1,11 @@
+<!-- 0401_Waiting for Date  -->
+<template name='requireLogin'>
+    {{#if currentUser}}
+        <h2> Вы авторизированы. Добрый день {{currentUser.username}}! </h2>
+    
+        {{> Template.contentBlock}}
+        
+    {{else}}
+        <h2> Пожалуйста вначале авторизируйтесь!</h2>
+    {{/if}}
+</template>
