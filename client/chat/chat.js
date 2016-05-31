@@ -1,3 +1,6 @@
+//client/chat/chat.js
+//new changes in chat was added
+
 Template.chat.onCreated(function(){
     
     this.id = () => FlowRouter.getParam('id');

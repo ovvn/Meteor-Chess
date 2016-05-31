@@ -1,6 +1,9 @@
 //server/main.js
 
 //внес изменения
+//new changes in main.js
+//новые изменения in main.js
+
 
 //0301_List Users.mp4
 Meteor.publish('users', function(){
